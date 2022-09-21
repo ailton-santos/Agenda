@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!-- {% load crispy_forms_tags %} -->
+
+{% block title %}Agenda{% endblock %}
+
+{% block content %} 
+<div class="row">
+    <div class="col-md-e offset-md-0 ">
+        <div class="card auth-card text-center">
+            <div class="card-body">
+                <h4 class="card-title text-center">Acessar Agenda</h4>
+                <form method="POST">{% csrf_token %}  
+                    {{ form.as_p }}
+                    <div>
+                        <input type="submit" class="btn btn-success" style="background-color: #3476e2" value="Agendar">
+
+                        
+                        <!-- <button type="submit" class="btn btn-primary btn-block">Agendar</button> -->
+                    </div>
+                    <br>
+                </form>
+                {% for message in messages %}
+                    <strong>Erro </strong>{{ message}}
+                {%endfor%}
+            <p class="change-form-p">Não tem cadastro? <a href="/accounts/register/">Clique aqui</a></p>
+            </div>
+        </div>
+    </div>  
+</div>
+
+{% endblock %}

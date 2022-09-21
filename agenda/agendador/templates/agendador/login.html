@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+
+{% block title %}Login{% endblock %}
+
+{% block content %} 
+<div class="row">
+    <div class="col-md-e offset-md-0 ">
+        <div class="card auth-card text-center">
+            <div class="card-body">
+                <h4 class="card-title text-center">Acessar Agenda</h4>
+                <form method="POST" action="submit">{% csrf_token %}  
+                    <div>
+                        <div align="center" name="meulogin">
+                            <label>Usuário: </label>
+                            <input type="text" name="username">
+                        </div>
+                        <br>
+                        <div align="center"  name="meulogin">
+                            <label>Senha: </label>
+                            <input type="password" name="password">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    </div>
+
+                    <br>
+                </form>
+                {% for message in messages %}
+                    <strong>Erro </strong>{{ message}}
+                {%endfor%}
+            <p class="change-form-p">Não tem cadastro? <a href="/accounts/register/">Clique aqui</a></p>
+            </div>
+        </div>
+    </div>  
+</div>
+
+{% endblock %}
